@@ -1,4 +1,4 @@
-loadstring(game:HttpGet('https://raw.githubusercontent.com/LiverMods/raw/main/Invisible/base'))()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/LiverMods/raw/main/Invisible/baseLM'))()
 --[[
        Feito por Liver zMods
        Made by Liver zMods
