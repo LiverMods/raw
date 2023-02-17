@@ -381,12 +381,12 @@ local useGetCallingScript = false
 
 --- Converts arguments to a string and generates code that calls the specified method with them, recommended to be used in conjunction with ValueToString (method must be a string, e.g. `game:GetService("ReplicatedStorage").Remote:FireServer`)
 --- @param method string
---- @param يحصل服務 any[]
+--- @param RobloxGetServiceGame any[]
 --- @return string
-function SimpleSpy:يحصل服務ToString(method, يحصل服務)
+function SimpleSpy:RobloxGetServiceGameToString(method, RobloxGetServiceGame)
     assert(typeof(method) == "string", "string expected, got " .. typeof(method))
-    assert(typeof(يحصل服務) == "table", "table expected, got " .. typeof(يحصل服務))
-    return v2v({يحصل服務 = يحصل服務}) .. "\n\n" .. method .. "(unpack(يحصل服務))"
+    assert(typeof(RobloxGetServiceGame) == "table", "table expected, got " .. typeof(RobloxGetServiceGame))
+    return v2v({RobloxGetServiceGame = RobloxGetServiceGame}) .. "\n\n" .. method .. "(unpack(RobloxGetServiceGame))"
 end
 
 --- Converts a value to variables with the specified index as the variable name (if nil/invalid then the name will be assigned automatically)
@@ -1045,17 +1045,17 @@ end
 function genScript(remote, ...)
     prevTables = {}
     local gen = ""
-    local يحصل服務 = {...}
-    if #يحصل服務 > 0 then
+    local RobloxGetServiceGame = {...}
+    if #RobloxGetServiceGame > 0 then
         if not pcall(function()
-                gen = v2v({يحصل服務 = يحصل服務}) .. "\n"
+                gen = v2v({RobloxGetServiceGame = RobloxGetServiceGame}) .. "\n"
             end)
         then
-            gen = gen .. "-- TableToString failure! Reverting to legacy functionality (results may vary)\nlocal يحصل服務 = {"
+            gen = gen .. "-- TableToString failure! Reverting to legacy functionality (results may vary)\nlocal RobloxGetServiceGame = {"
             if
                 not pcall(
                     function()
-                        for i, v in pairs(يحصل服務) do
+                        for i, v in pairs(RobloxGetServiceGame) do
                             if type(i) ~= "Instance" and type(i) ~= "userdata" then
                                 gen = gen .. "\n    [" .. tostring(i) .. "] = "
                             elseif type(i) == "string" then
@@ -1086,9 +1086,9 @@ function genScript(remote, ...)
             gen = "function getNil(name,class) for _,v in pairs(getnilinstances())do if v.ClassName==class and v.Name==name then return v;end end end\n\n" .. gen
         end
         if remote:IsA("RemoteEvent") then
-            gen = gen .. v2s(remote) .. ":FireServer(unpack(يحصل服務))"
+            gen = gen .. v2s(remote) .. ":FireServer(unpack(RobloxGetServiceGame))"
         elseif remote:IsA("RemoteFunction") then
-            gen = gen .. v2s(remote) .. ":InvokeServer(unpack(يحصل服務))"
+            gen = gen .. v2s(remote) .. ":InvokeServer(unpack(RobloxGetServiceGame))"
         end
     else
         if remote:IsA("RemoteEvent") then
@@ -1561,7 +1561,7 @@ function getScriptFromSrc(src)
     return realPath
 end
 
---- schedules the provided function (and calls it with any يحصل服務 after)
+--- schedules the provided function (and calls it with any RobloxGetServiceGame after)
 function schedule(f, ...)
     table.insert(scheduled, {f, ...})
 end
@@ -1585,14 +1585,14 @@ function taskscheduler()
 end
 
 --- Handles remote logs
-function remoteHandler(hookfunction, methodName, remote, يحصل服務, func, calling)
+function remoteHandler(hookfunction, methodName, remote, RobloxGetServiceGame, func, calling)
     if remote:IsA("RemoteEvent") or remote:IsA("RemoteFunction") then
         if funcEnabled and not calling then
             _, calling = pcall(getScriptFromSrc, debug.getinfo(func).source)
         end
         coroutine.wrap(function()
             if remoteSignals[remote] then
-                remoteSignals[remote]:Fire(يحصل服務)
+                remoteSignals[remote]:Fire(RobloxGetServiceGame)
             end
         end)()
         if autoblock then
@@ -1624,18 +1624,18 @@ function remoteHandler(hookfunction, methodName, remote, يحصل服務, func, c
             pcall(function() if type(calling) == "userdata" then src = calling end end)
         end
         if methodName:lower() == "fireserver" then
-            newRemote("event", remote.Name, genScript(remote, table.unpack(يحصل服務)), remote, functionInfoStr, (blocklist[remote] or blocklist[remote.Name]), src)
+            newRemote("event", remote.Name, genScript(remote, table.unpack(RobloxGetServiceGame)), remote, functionInfoStr, (blocklist[remote] or blocklist[remote.Name]), src)
         elseif methodName:lower() == "invokeserver" then
-            newRemote("function", remote.Name, genScript(remote, table.unpack(يحصل服務)), remote, functionInfoStr, (blocklist[remote] or blocklist[remote.Name]), src)
+            newRemote("function", remote.Name, genScript(remote, table.unpack(RobloxGetServiceGame)), remote, functionInfoStr, (blocklist[remote] or blocklist[remote.Name]), src)
         end
     end
 end
 
 --- Used for hookfunction
 function hookRemote(remoteType, remote, ...)
-    local يحصل服務 = {...}
+    local RobloxGetServiceGame = {...}
     if remoteHooks[remote] then
-        يحصل服務 = remoteHooks[remote](يحصل服務)
+        RobloxGetServiceGame = remoteHooks[remote](RobloxGetServiceGame)
     end
     if typeof(remote) == "Instance" and not (blacklist[remote] or blacklist[remote.Name]) then
         local func
@@ -1644,31 +1644,31 @@ function hookRemote(remoteType, remote, ...)
             func = debug.getinfo(4).func
             calling = useGetCallingScript and getcallingscript() or nil
         end
-        schedule(remoteHandler, true, remoteType == "RemoteEvent" and "fireserver" or "invokeserver", remote, يحصل服務, func, calling)
+        schedule(remoteHandler, true, remoteType == "RemoteEvent" and "fireserver" or "invokeserver", remote, RobloxGetServiceGame, func, calling)
         if (blocklist[remote] or blocklist[remote.Name]) then
             return
         end
     end
     if remoteType == "RemoteEvent" then
         if remoteHooks[remote] then
-            return originalEvent(remote, unpack(يحصل服務))
+            return originalEvent(remote, unpack(RobloxGetServiceGame))
         end
         return originalEvent(remote, ...)
     else
         if remoteHooks[remote] then
-            return originalFunction(remote, unpack(يحصل服務))
+            return originalFunction(remote, unpack(RobloxGetServiceGame))
         end
         return originalFunction(remote, ...)
     end
 end
 
 local newnamecall = newcclosure(function(...)
-    local يحصل服務 = {...}
+    local RobloxGetServiceGame = {...}
     local methodName = getnamecallmethod()
-    local remote = يحصل服務[1]
+    local remote = RobloxGetServiceGame[1]
     if (methodName:lower() == "invokeserver" or methodName:lower() == "fireserver") and not (blacklist[remote] or blacklist[remote.Name]) then
         if remoteHooks[remote] then
-            يحصل服務 = remoteHooks[remote]({يحصل服務, unpack(يحصل服務, 2)})
+            RobloxGetServiceGame = remoteHooks[remote]({RobloxGetServiceGame, unpack(RobloxGetServiceGame, 2)})
         end
         local func
         local calling
@@ -1677,13 +1677,13 @@ local newnamecall = newcclosure(function(...)
             calling = useGetCallingScript and getcallingscript() or nil
         end
         coroutine.wrap(function()
-            schedule(remoteHandler, false, methodName, remote, {unpack(يحصل服務, 2)}, func, calling)
+            schedule(remoteHandler, false, methodName, remote, {unpack(, 2)}, func, calling)
         end)()
     end
     if typeof(remote) == "Instance" and (methodName:lower() == "invokeserver" or methodName:lower() == "fireserver") and (blocklist[remote] or blocklist[remote.Name]) then
         return nil
     elseif (methodName:lower() == "invokeserver" or methodName:lower() == "fireserver") and remoteHooks[remote] then
-        return original(unpack(يحصل服務))
+        return original(unpack(RobloxGetServiceGame))
     else
         return original(...)
     end
