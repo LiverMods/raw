@@ -9,6 +9,14 @@ Part.CFrame = CFrame.new(28.01, 11.05, -12.62)
 Part.CanCollide = true
 Part.Anchored = true
 
+
+--[[ FUNÇÃO ]]
+Part.Touched:connect(function(hit)
+ if hit and hit.Parent and hit.Parent:FindFirstChild("Humanoid") then
+  hit.Parent.Humanoid.Health = 100
+end
+end)
+
 --[[ Cor e Material ]]
 Part.Material = "Neon"
 while wait() do
@@ -39,9 +47,3 @@ while wait() do
     end
 end
 
---[[ FUNÇÃO ]]
-Part.Touched:connect(function(hit)
- if hit and hit.Parent and hit.Parent:FindFirstChild("Humanoid") then
-  hit.Parent.Humanoid.Health = 100
-end
-end)
