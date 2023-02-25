@@ -1,0 +1,728 @@
+local PrisonLife = Instance.new("ScreenGui")
+local MainGUI = Instance.new("Frame")
+local title = Instance.new("TextLabel")
+local credits = Instance.new("TextLabel")
+local ScrollingFrame = Instance.new("ScrollingFrame")
+local guns = Instance.new("TextButton")
+local btools = Instance.new("TextButton")
+local clickarrest = Instance.new("TextButton")
+local arrestall = Instance.new("TextButton")
+local doors = Instance.new("TextButton")
+local fences = Instance.new("TextButton")
+local taser = Instance.new("TextButton")
+local inmate = Instance.new("TextButton")
+local crime = Instance.new("TextButton")
+local na = Instance.new("TextButton")
+local police = Instance.new("TextButton")
+local killaura = Instance.new("TextButton")
+local killall = Instance.new("TextButton")
+local close = Instance.new("TextButton")
+local fastm9 = Instance.new("TextButton")
+local fastrem = Instance.new("TextButton")
+local fastak = Instance.new("TextButton")
+local TeleportGUI = Instance.new("Frame")
+local PlayerTP_Input = Instance.new("TextBox")
+local PlayerTP_Teleport = Instance.new("TextButton")
+local OpenGUI = Instance.new("Frame")
+local open = Instance.new("TextButton")
+--Properties:
+PrisonLife.Name = "Prison Life"
+PrisonLife.Parent = game.CoreGui
+MainGUI.Name = "MainGUI"
+MainGUI.Parent = PrisonLife
+MainGUI.BackgroundColor3 = Color3.new(0.117647, 0.117647, 0.117647)
+MainGUI.BorderColor3 = Color3.new(1, 0.333333, 0)
+MainGUI.BorderSizePixel = 5
+MainGUI.Position = UDim2.new(0.279383421, 0, 0.121513948, 0)
+MainGUI.Size = UDim2.new(0, 458, 0, 380)
+MainGUI.Visible = false
+MainGUI.Active = true
+MainGUI.Draggable = true
+title.Name = "title"
+title.Parent = MainGUI
+title.BackgroundColor3 = Color3.new(1, 0.333333, 0)
+title.BorderColor3 = Color3.new(1, 0.333333, 0)
+title.Size = UDim2.new(0, 458, 0, 50)
+title.Font = Enum.Font.SourceSans
+title.Text = "Bunny X Prison life Gui"
+title.TextColor3 = Color3.new(1, 1, 1)
+title.TextScaled = true
+title.TextSize = 14
+title.TextWrapped = true
+credits.Name = "credits"
+credits.Parent = MainGUI
+credits.BackgroundColor3 = Color3.new(1, 0.333333, 0)
+credits.BorderColor3 = Color3.new(1, 0.333333, 0)
+credits.Position = UDim2.new(0, 0, 0.868421078, 0)
+credits.Size = UDim2.new(0, 458, 0, 50)
+credits.Font = Enum.Font.SourceSans
+credits.Text = "Made By: BunnyX"
+credits.TextColor3 = Color3.new(1, 1, 1)
+credits.TextScaled = true
+credits.TextSize = 14
+credits.TextWrapped = true
+ScrollingFrame.Parent = MainGUI
+ScrollingFrame.BackgroundColor3 = Color3.new(0.117647, 0.117647, 0.117647)
+ScrollingFrame.BorderColor3 = Color3.new(0.117647, 0.117647, 0.117647)
+ScrollingFrame.Position = UDim2.new(0.0131004369, 0, 0.150000006, 0)
+ScrollingFrame.Size = UDim2.new(0, 229, 0, 266)
+guns.Name = "guns"
+guns.Parent = ScrollingFrame
+guns.BackgroundColor3 = Color3.new(0, 0, 0)
+guns.BorderColor3 = Color3.new(0, 0, 0)
+guns.Size = UDim2.new(0, 216, 0, 50)
+guns.Font = Enum.Font.SourceSans
+guns.Text = "All Guns/Keycard"
+guns.TextColor3 = Color3.new(1, 1, 1)
+guns.TextScaled = true
+guns.TextSize = 14
+guns.TextWrapped = true
+guns.MouseButton1Click:connect(function()
+    local Weapon = {"M4A1"}
+for i,v in pairs(workspace.Prison_ITEMS.giver:GetChildren()) do
+if v.Name == Weapon[1] then
+local lol = workspace.Remote.ItemHandler:InvokeServer(v.ITEMPICKUP)
+end
+end
+local Weapon = {"AK-47"}
+for i,v in pairs(workspace.Prison_ITEMS.giver:GetChildren()) do
+if v.Name == Weapon[1] then
+local lol = workspace.Remote.ItemHandler:InvokeServer(v.ITEMPICKUP)
+end
+end
+local Weapon = {"M9"}
+for i,v in pairs(workspace.Prison_ITEMS.giver:GetChildren()) do
+if v.Name == Weapon[1] then
+local lol = workspace.Remote.ItemHandler:InvokeServer(v.ITEMPICKUP)
+end
+end
+local Weapon = {"Remington 870"}
+for i,v in pairs(workspace.Prison_ITEMS.giver:GetChildren()) do
+if v.Name == Weapon[1] then
+local lol = workspace.Remote.ItemHandler:InvokeServer(v.ITEMPICKUP)
+end
+end
+local Remote = game.Workspace.Remote['ItemHandler']
+local Arguments = {
+        [1] = Workspace.Prison_ITEMS.single:WaitForChild("Key card").ITEMPICKUP
+}
+Remote:InvokeServer(unpack(Arguments))
+end)
+btools.Name = "btools"
+btools.Parent = ScrollingFrame
+btools.BackgroundColor3 = Color3.new(0, 0, 0)
+btools.BorderColor3 = Color3.new(0, 0, 0)
+btools.Position = UDim2.new(0, 0, 0.065789476, 0)
+btools.Size = UDim2.new(0, 216, 0, 50)
+btools.Font = Enum.Font.SourceSans
+btools.Text = "Btools"
+btools.TextColor3 = Color3.new(1, 1, 1)
+btools.TextScaled = true
+btools.TextSize = 14
+btools.TextWrapped = true
+btools.MouseButton1Click:connect(function()
+    wait(0.1)
+local tool1 = Instance.new("HopperBin",game.Players.LocalPlayer.Backpack)
+local tool2 = Instance.new("HopperBin",game.Players.LocalPlayer.Backpack)
+local tool3 = Instance.new("HopperBin",game.Players.LocalPlayer.Backpack)
+tool1.BinType = "Clone"
+tool2.BinType = "Hammer"
+tool3.BinType = "Grab"
+end)
+clickarrest.Name = "clickarrest"
+clickarrest.Parent = ScrollingFrame
+clickarrest.BackgroundColor3 = Color3.new(0, 0, 0)
+clickarrest.BorderColor3 = Color3.new(0, 0, 0)
+clickarrest.Position = UDim2.new(0, 0, 0.131578952, 0)
+clickarrest.Size = UDim2.new(0, 216, 0, 50)
+clickarrest.Font = Enum.Font.SourceSans
+clickarrest.Text = "Click Arrest"
+clickarrest.TextColor3 = Color3.new(1, 1, 1)
+clickarrest.TextScaled = true
+clickarrest.TextSize = 14
+clickarrest.TextWrapped = true
+clickarrest.MouseButton1Click:connect(function()
+game:GetService("StarterGui"):SetCore("ChatMakeSystemMessage",{
+Text = ("[Click Arrest Is Now Permanently On! All You Have To Do Is Click On A Bad Guy Or A Inmate In The Wrong Area.]");
+Color = Color3.new(0,255,0);
+FontSize = Enum.FontSize.Size24;
+})
+     local mouse = game.Players.LocalPlayer:GetMouse()
+   local arrestEvent = game.Workspace.Remote.arrest
+   mouse.Button1Down:connect(function()
+   local obj = mouse.Target
+   local response = arrestEvent:InvokeServer(obj)
+   end)
+end)
+arrestall.Name = "arrestall"
+arrestall.Parent = ScrollingFrame
+arrestall.BackgroundColor3 = Color3.new(0, 0, 0)
+arrestall.BorderColor3 = Color3.new(0, 0, 0)
+arrestall.Position = UDim2.new(0, 0, 0.197368428, 0)
+arrestall.Size = UDim2.new(0, 216, 0, 50)
+arrestall.Font = Enum.Font.SourceSans
+arrestall.Text = "Arrest All"
+arrestall.TextColor3 = Color3.new(1, 1, 1)
+arrestall.TextScaled = true
+arrestall.TextSize = 14
+arrestall.TextWrapped = true
+arrestall.MouseButton1Click:connect(function()
+game:GetService("StarterGui"):SetCore("ChatMakeSystemMessage",{
+Text = ("[Arresting All Bad Guys...]");
+Color = Color3.new(0,255,0);
+FontSize = Enum.FontSize.Size24;
+})
+     wait(0.1)
+local Player = game.Players.LocalPlayer
+local cpos = Player.Character.HumanoidRootPart.CFrame
+for i,v in pairs(game.Teams.Criminals:GetPlayers()) do
+if v.Name ~= Player.Name then
+local i = 10
+    repeat
+    wait()
+    i = i-1
+    game.Workspace.Remote.arrest:InvokeServer(v.Character.HumanoidRootPart)
+    Player.Character.HumanoidRootPart.CFrame = v.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, 1)
+    until i == 0
+end
+end
+end)
+doors.Name = "doors"
+doors.Parent = ScrollingFrame
+doors.BackgroundColor3 = Color3.new(0, 0, 0)
+doors.BorderColor3 = Color3.new(0, 0, 0)
+doors.Position = UDim2.new(0, 0, 0.263157904, 0)
+doors.Size = UDim2.new(0, 216, 0, 50)
+doors.Font = Enum.Font.SourceSans
+doors.Text = "Remove Doors"
+doors.TextColor3 = Color3.new(1, 1, 1)
+doors.TextScaled = true
+doors.TextSize = 14
+doors.TextWrapped = true
+doors.MouseButton1Click:connect(function()
+    game:GetService("StarterGui"):SetCore("ChatMakeSystemMessage",{
+Text = ("[All Doors Have Been Removed...]");
+Color = Color3.new(0,255,0);
+FontSize = Enum.FontSize.Size24;
+})
+    game.Workspace.Doors:Destroy()
+end)
+fences.Name = "fences"
+fences.Parent = ScrollingFrame
+fences.BackgroundColor3 = Color3.new(0, 0, 0)
+fences.BorderColor3 = Color3.new(0, 0, 0)
+fences.Position = UDim2.new(0, 0, 0.328947365, 0)
+fences.Size = UDim2.new(0, 216, 0, 50)
+fences.Font = Enum.Font.SourceSans
+fences.Text = "Remove Fences"
+fences.TextColor3 = Color3.new(1, 1, 1)
+fences.TextScaled = true
+fences.TextSize = 14
+fences.TextWrapped = true
+fences.MouseButton1Click:connect(function()
+game:GetService("StarterGui"):SetCore("ChatMakeSystemMessage",{
+Text = ("[All Fences Have Been Removed...]");
+Color = Color3.new(0,255,0);
+FontSize = Enum.FontSize.Size24;
+})
+    game.Workspace.Prison_Fences:Destroy()
+end)
+taser.Name = "taser"
+taser.Parent = ScrollingFrame
+taser.BackgroundColor3 = Color3.new(0, 0, 0)
+taser.BorderColor3 = Color3.new(0, 0, 0)
+taser.Position = UDim2.new(0, 0, 0.394736826, 0)
+taser.Size = UDim2.new(0, 216, 0, 50)
+taser.Font = Enum.Font.SourceSans
+taser.Text = "Bypass Taser"
+taser.TextColor3 = Color3.new(1, 1, 1)
+taser.TextScaled = true
+taser.TextSize = 14
+taser.TextWrapped = true
+taser.MouseButton1Click:connect(function()
+      game.Players.LocalPlayer.Character.ClientInputHandler.Disabled = true
+   game.Players.LocalPlayer.CharacterAdded:connect(function()
+   game.Workspace:WaitForChild(game.Players.LocalPlayer.Name)
+   game.Players.LocalPlayer.Character.ClientInputHandler.Disabled = true
+   end)
+end)
+inmate.Name = "inmate"
+inmate.Parent = ScrollingFrame
+inmate.BackgroundColor3 = Color3.new(0, 0, 0)
+inmate.BorderColor3 = Color3.new(0, 0, 0)
+inmate.Position = UDim2.new(0, 0, 0.460526288, 0)
+inmate.Size = UDim2.new(0, 216, 0, 50)
+inmate.Font = Enum.Font.SourceSans
+inmate.Text = "Team Inmate"
+inmate.TextColor3 = Color3.new(1, 1, 1)
+inmate.TextScaled = true
+inmate.TextSize = 14
+inmate.TextWrapped = true
+inmate.MouseButton1Click:connect(function()
+    Workspace.Remote.TeamEvent:FireServer("Bright orange")
+end)
+crime.Name = "crime"
+crime.Parent = ScrollingFrame
+crime.BackgroundColor3 = Color3.new(0, 0, 0)
+crime.BorderColor3 = Color3.new(0, 0, 0)
+crime.Position = UDim2.new(0, 0, 0.526315749, 0)
+crime.Size = UDim2.new(0, 216, 0, 50)
+crime.Font = Enum.Font.SourceSans
+crime.Text = "Team Crime"
+crime.TextColor3 = Color3.new(1, 1, 1)
+crime.TextScaled = true
+crime.TextSize = 14
+crime.TextWrapped = true
+crime.MouseButton1Click:connect(function()
+    weld02 = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-919.958, 95.327, 2138.189)
+    wait(0.075)
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(weld02)
+end)
+na.Name = "na"
+na.Parent = ScrollingFrame
+na.BackgroundColor3 = Color3.new(0, 0, 0)
+na.BorderColor3 = Color3.new(0, 0, 0)
+na.Position = UDim2.new(0, 0, 0.59210521, 0)
+na.Size = UDim2.new(0, 216, 0, 50)
+na.Font = Enum.Font.SourceSans
+na.Text = "Team N/A"
+na.TextColor3 = Color3.new(1, 1, 1)
+na.TextScaled = true
+na.TextSize = 14
+na.TextWrapped = true
+na.MouseButton1Click:connect(function()
+    Workspace.Remote.TeamEvent:FireServer("Medium stone grey")
+end)
+police.Name = "police"
+police.Parent = ScrollingFrame
+police.BackgroundColor3 = Color3.new(0, 0, 0)
+police.BorderColor3 = Color3.new(0, 0, 0)
+police.Position = UDim2.new(0, 0, 0.657894671, 0)
+police.Size = UDim2.new(0, 216, 0, 50)
+police.Font = Enum.Font.SourceSans
+police.Text = "Team Police"
+police.TextColor3 = Color3.new(1, 1, 1)
+police.TextScaled = true
+police.TextSize = 14
+police.TextWrapped = true
+police.MouseButton1Click:connect(function()
+    Workspace.Remote.TeamEvent:FireServer("Bright blue")
+end)
+killaura.Name = "killaura"
+killaura.Parent = ScrollingFrame
+killaura.BackgroundColor3 = Color3.new(0, 0, 0)
+killaura.BorderColor3 = Color3.new(0, 0, 0)
+killaura.Position = UDim2.new(0, 0, 0.868420959, 0)
+killaura.Size = UDim2.new(0, 216, 0, 50)
+killaura.Font = Enum.Font.SourceSans
+killaura.Text = "Killaura [Press "E"]"
+killaura.TextColor3 = Color3.new(1, 0, 0)
+killaura.TextScaled = true
+killaura.TextSize = 14
+killaura.TextWrapped = true
+killaura.MouseButton1Click:connect(function()
+game:GetService("StarterGui"):SetCore("ChatMakeSystemMessage",{
+Text = ("Press E When You Are Next To Someone To Automatically Kill Them");
+Color = Color3.new(255,255,255);
+FontSize = Enum.FontSize.Size24;
+})
+     plr = game:service'Players'.LocalPlayer
+char = plr.Character
+mouse = plr:GetMouse()
+on = false
+mouse.KeyDown:connect(function(key)
+  if key == "e" then
+      on = true
+  end
+end)
+mouse.KeyUp:connect(function(key)
+  if key == "e" then
+      on = false
+  end
+end)
+while wait(0.1) do
+  for i, b in pairs(game.Players:GetChildren()) do
+      if b.Name ~= plr.Name and not b:IsFriendsWith(plr.UserId) and on then
+          for i = 1, 10 do
+              game.ReplicatedStorage.meleeEvent:FireServer(b)
+          end
+      end
+  end
+end
+while true do
+ wait(0.01)
+ for i,v in pairs (game.Players:GetChildren()) do
+   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[v.Name].Character.HumanoidRootPart.CFrame
+   game.ReplicatedStorage.meleeEvent:FireServer(v.Name)
+   wait(.8)
+ end
+end
+end)
+killall.Name = "killall"
+killall.Parent = ScrollingFrame
+killall.BackgroundColor3 = Color3.new(0, 0, 0)
+killall.BorderColor3 = Color3.new(0, 0, 0)
+killall.Position = UDim2.new(0, 0, 0.93421042, 0)
+killall.Size = UDim2.new(0, 216, 0, 50)
+killall.Font = Enum.Font.SourceSans
+killall.Text = "Kill All"
+killall.TextColor3 = Color3.new(1, 0, 0)
+killall.TextScaled = true
+killall.TextSize = 14
+killall.TextWrapped = true
+killall.MouseButton1Click:connect(function()
+wait(0.5)
+game:GetService("StarterGui"):SetCore("ChatMakeSystemMessage",{
+Text = ("[R.I.P To Everyone!]");
+Color = Color3.new(255,0,0);
+FontSize = Enum.FontSize.Size24;
+})
+workspace.Remote.TeamEvent:FireServer("Medium stone grey")
+game.Workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.giver["Remington 870"].ITEMPICKUP)
+wait(0.5)
+function kill(a)
+local A_1 =
+{
+[1] =
+{
+["RayObject"] = Ray.new(Vector3.new(845.555908, 101.429337, 2269.43945), Vector3.new(-391.152252, 8.65560055, -83.2166901)),
+["Distance"] = 3.2524313926697,
+["Cframe"] = CFrame.new(840.310791, 101.334137, 2267.87988, 0.0636406094, 0.151434347, -0.986416459, 0, 0.988420188, 0.151741937, 0.997972965, -0.00965694897, 0.0629036576),
+["Hit"] = a.Character.Head
+},
+  [2] =
+{
+["RayObject"] = Ray.new(Vector3.new(845.555908, 101.429337, 2269.43945), Vector3.new(-392.481476, -8.44939327, -76.7261353)),
+["Distance"] = 3.2699294090271,
+["Cframe"] = CFrame.new(840.290466, 101.184189, 2267.93506, 0.0964837447, 0.0589403138, -0.993587971, 4.65661287e-10, 0.998245299, 0.0592165813, 0.995334625, -0.00571343815, 0.0963144377),
+["Hit"] = a.Character.Head
+},
+[3] =
+{
+["RayObject"] = Ray.new(Vector3.new(845.555908, 101.429337, 2269.43945), Vector3.new(-389.21701, -2.50536323, -92.2163162)),
+["Distance"] = 3.1665518283844,
+["Cframe"] = CFrame.new(840.338867, 101.236496, 2267.80371, 0.0166504811, 0.0941716284, -0.995416701, 1.16415322e-10, 0.995554805, 0.0941846818, 0.999861419, -0.00156822044, 0.0165764652),
+["Hit"] = a.Character.Head
+},
+[4] =
+{
+["RayObject"] = Ray.new(Vector3.new(845.555908, 101.429337, 2269.43945), Vector3.new(-393.353973, 3.13988972, -72.5452042)),
+["Distance"] = 3.3218522071838,
+["Cframe"] = CFrame.new(840.277222, 101.285957, 2267.9707, 0.117109694, 0.118740402, -0.985994935, -1.86264515e-09, 0.992826641, 0.119563118, 0.993119001, -0.0140019981, 0.116269611),
+["Hit"] = a.Character.Head
+},
+[5] =
+{
+["RayObject"] = Ray.new(Vector3.new(845.555908, 101.429337, 2269.43945), Vector3.new(-390.73172, 3.2097764, -85.5477524)),
+["Distance"] = 3.222757101059,
+["Cframe"] = CFrame.new(840.317993, 101.286423, 2267.86035, 0.0517584644, 0.123365127, -0.991010666, 0, 0.992340803, 0.123530701, 0.99865967, -0.00639375951, 0.0513620302),
+["Hit"] = a.Character.Head
+}
+}
+local A_2 = game.Players.LocalPlayer.Backpack["Remington 870"]
+local Event = game:GetService("ReplicatedStorage").ShootEvent
+Event:FireServer(A_1, A_2)
+Event:FireServer(A_1, A_2)
+end
+for i,v in pairs(game.Players:GetChildren())do
+if v.Name ~= game.Players.LocalPlayer.Name then
+kill(v)
+end
+end
+wait(1)
+workspace.Remote.TeamEvent:FireServer("Bright orange")
+end)
+close.Name = "close"
+close.Parent = MainGUI
+close.BackgroundColor3 = Color3.new(1, 0.129412, 0.141176)
+close.BorderColor3 = Color3.new(0, 0, 0)
+close.Position = UDim2.new(1.02183402, 0, 0, 0)
+close.Size = UDim2.new(0, 53, 0, 50)
+close.Font = Enum.Font.SourceSans
+close.Text = "X"
+close.TextColor3 = Color3.new(1, 1, 1)
+close.TextScaled = true
+close.TextSize = 14
+close.TextWrapped = true
+close.MouseButton1Click:connect(function()
+    MainGUI.Visible = false
+    OpenGUI.Visible = true
+end)
+fastm9.Name = "fastm9"
+fastm9.Parent = MainGUI
+fastm9.BackgroundColor3 = Color3.new(0, 0, 0)
+fastm9.BorderColor3 = Color3.new(1, 1, 1)
+fastm9.Position = UDim2.new(0.513100445, 0, 0.292734325, 0)
+fastm9.Size = UDim2.new(0, 213, 0, 50)
+fastm9.Font = Enum.Font.SourceSans
+fastm9.Text = "Fast M9"
+fastm9.TextColor3 = Color3.new(1, 1, 1)
+fastm9.TextScaled = true
+fastm9.TextSize = 14
+fastm9.TextWrapped = true
+fastm9.MouseButton1Click:connect(function()
+    local Player = game.Players.LocalPlayer.Name
+local Gun = "M9" -- &lt; -- Gun Name
+local Run = game:GetService(&quot;RunService&quot;)
+Gun = game.Players[Player].Character[Gun]
+local Mouse = game.Players.LocalPlayer:GetMouse()
+local Down = false
+local Sound = Gun.Handle.FireSound
+function CreateRay(Point_A, Point_B)
+local Ray = Ray.new(Point_A, (Point_B - Point_A).Unit * (2 ^ 31 - 1))
+local Part, Pos = workspace:FindPartOnRay(Ray, game.Players.LocalPlayer.Character)
+local Dist = (Point_A - Pos).Magnitude
+local CFrame = CFrame.new(Point_A, Pos) * CFrame.new(0, 0, -Dist / 2)
+return CFrame, Dist, Ray
+end
+function FireLaser(target)
+coroutine.resume(coroutine.create(function()
+local C, D, R = CreateRay(Gun.Muzzle.CFrame.p, target.CFrame.p)
+local Bullet = Instance.new(&quot;Part&quot;, Gun)
+Bullet.BrickColor = BrickColor.Yellow()
+Bullet.Material = &quot;Neon&quot;
+Bullet.Anchored = true
+Bullet.CanCollide = false
+Bullet.Size = Vector3.new(0.2, 0.2, D)
+Bullet.CFrame = C
+local bulletTable = {}
+table.insert(bulletTable, {
+Hit = target,
+Distance = D,
+Cframe = C,
+RayObject = R
+})
+game.ReplicatedStorage.ShootEvent:FireServer(bulletTable, Gun)
+local C = Sound:Clone()
+C.Parent = Gun
+C:Play()
+wait(0.05)
+Bullet:Remove()
+end))
+end
+Mouse.Button1Down:Connect(function()
+Down = true
+end)
+Mouse.Button1Up:Connect(function()
+Down = false
+end)
+while Run.Stepped:wait() do
+if Down == true then
+game.ReplicatedStorage.SoundEvent:FireServer(Sound, Gun)
+FireLaser(Mouse.Target)
+end
+end
+end)
+fastrem.Name = &quot;fastrem&quot;
+fastrem.Parent = MainGUI
+fastrem.BackgroundColor3 = Color3.new(0, 0, 0)
+fastrem.BorderColor3 = Color3.new(1, 1, 1)
+fastrem.Position = UDim2.new(0.513100445, 0, 0.1615538, 0)
+fastrem.Size = UDim2.new(0, 213, 0, 50)
+fastrem.Font = Enum.Font.SourceSans
+fastrem.Text = &quot;Fast Shotgun&quot;
+fastrem.TextColor3 = Color3.new(1, 1, 1)
+fastrem.TextScaled = true
+fastrem.TextSize = 14
+fastrem.TextWrapped = true
+fastrem.MouseButton1Click:connect(function()
+    local Player = game.Players.LocalPlayer.Name
+local Gun = &quot;Remington 870&quot; -- &lt; -- Gun Name
+local Run = game:GetService(&quot;RunService&quot;)
+Gun = game.Players[Player].Character[Gun]
+local Mouse = game.Players.LocalPlayer:GetMouse()
+local Down = false
+local Sound = Gun.Handle.FireSound
+function CreateRay(Point_A, Point_B)
+local Ray = Ray.new(Point_A, (Point_B - Point_A).Unit * (2 ^ 31 - 1))
+local Part, Pos = workspace:FindPartOnRay(Ray, game.Players.LocalPlayer.Character)
+local Dist = (Point_A - Pos).Magnitude
+local CFrame = CFrame.new(Point_A, Pos) * CFrame.new(0, 0, -Dist / 2)
+return CFrame, Dist, Ray
+end
+function FireLaser(target)
+coroutine.resume(coroutine.create(function()
+local C, D, R = CreateRay(Gun.Muzzle.CFrame.p, target.CFrame.p)
+local Bullet = Instance.new(&quot;Part&quot;, Gun)
+Bullet.BrickColor = BrickColor.Yellow()
+Bullet.Material = &quot;Neon&quot;
+Bullet.Anchored = true
+Bullet.CanCollide = false
+Bullet.Size = Vector3.new(0.2, 0.2, D)
+Bullet.CFrame = C
+local bulletTable = {}
+table.insert(bulletTable, {
+Hit = target,
+Distance = D,
+Cframe = C,
+RayObject = R
+})
+game.ReplicatedStorage.ShootEvent:FireServer(bulletTable, Gun)
+local C = Sound:Clone()
+C.Parent = Gun
+C:Play()
+wait(0.05)
+Bullet:Remove()
+end))
+end
+Mouse.Button1Down:Connect(function()
+Down = true
+end)
+Mouse.Button1Up:Connect(function()
+Down = false
+end)
+while Run.Stepped:wait() do
+if Down == true then
+game.ReplicatedStorage.SoundEvent:FireServer(Sound, Gun)
+FireLaser(Mouse.Target)
+end
+end
+end)
+fastak.Name = &quot;fastak&quot;
+fastak.Parent = MainGUI
+fastak.BackgroundColor3 = Color3.new(0, 0, 0)
+fastak.BorderColor3 = Color3.new(1, 1, 1)
+fastak.Position = UDim2.new(0.513100445, 0, 0.423914939, 0)
+fastak.Size = UDim2.new(0, 213, 0, 50)
+fastak.Font = Enum.Font.SourceSans
+fastak.Text = &quot;Fast AK&quot;
+fastak.TextColor3 = Color3.new(1, 1, 1)
+fastak.TextScaled = true
+fastak.TextSize = 14
+fastak.TextWrapped = true
+fastak.MouseButton1Click:connect(function()
+    local Player = game.Players.LocalPlayer.Name
+local Gun = &quot;AK-47&quot; -- &lt; -- Gun Name
+local Run = game:GetService(&quot;RunService&quot;)
+Gun = game.Players[Player].Character[Gun]
+local Mouse = game.Players.LocalPlayer:GetMouse()
+local Down = false
+local Sound = Gun.Handle.FireSound
+function CreateRay(Point_A, Point_B)
+local Ray = Ray.new(Point_A, (Point_B - Point_A).Unit * (2 ^ 31 - 1))
+local Part, Pos = workspace:FindPartOnRay(Ray, game.Players.LocalPlayer.Character)
+local Dist = (Point_A - Pos).Magnitude
+local CFrame = CFrame.new(Point_A, Pos) * CFrame.new(0, 0, -Dist / 2)
+return CFrame, Dist, Ray
+end
+function FireLaser(target)
+coroutine.resume(coroutine.create(function()
+local C, D, R = CreateRay(Gun.Muzzle.CFrame.p, target.CFrame.p)
+local Bullet = Instance.new(&quot;Part&quot;, Gun)
+Bullet.BrickColor = BrickColor.Yellow()
+Bullet.Material = &quot;Neon&quot;
+Bullet.Anchored = true
+Bullet.CanCollide = false
+Bullet.Size = Vector3.new(0.2, 0.2, D)
+Bullet.CFrame = C
+local bulletTable = {}
+table.insert(bulletTable, {
+Hit = target,
+Distance = D,
+Cframe = C,
+RayObject = R
+})
+game.ReplicatedStorage.ShootEvent:FireServer(bulletTable, Gun)
+local C = Sound:Clone()
+C.Parent = Gun
+C:Play()
+wait(0.05)
+Bullet:Remove()
+end))
+end
+Mouse.Button1Down:Connect(function()
+Down = true
+end)
+Mouse.Button1Up:Connect(function()
+Down = false
+end)
+while Run.Stepped:wait() do
+if Down == true then
+game.ReplicatedStorage.SoundEvent:FireServer(Sound, Gun)
+FireLaser(Mouse.Target)
+end
+end
+end)
+TeleportGUI.Name = &quot;TeleportGUI&quot;
+TeleportGUI.Parent = MainGUI
+TeleportGUI.BackgroundColor3 = Color3.new(0, 0, 0)
+TeleportGUI.BorderColor3 = Color3.new(0, 0, 0)
+TeleportGUI.Position = UDim2.new(0.512330532, 0, 0.586789727, 0)
+TeleportGUI.Size = UDim2.new(0, 214, 0, 100)
+PlayerTP_Input.Name = &quot;PlayerTP_Input&quot;
+PlayerTP_Input.Parent = TeleportGUI
+PlayerTP_Input.BackgroundColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+PlayerTP_Input.BorderColor3 = Color3.new(1, 1, 1)
+PlayerTP_Input.Position = UDim2.new(-1.1920929e-07, 0, -0.00965511799, 0)
+PlayerTP_Input.Size = UDim2.new(0, 214, 0, 50)
+PlayerTP_Input.Font = Enum.Font.SourceSans
+PlayerTP_Input.PlaceholderColor3 = Color3.new(1, 1, 1)
+PlayerTP_Input.Text = &quot;[ENTER PLAYER NAME]&quot;
+PlayerTP_Input.TextColor3 = Color3.new(1, 1, 1)
+PlayerTP_Input.TextScaled = true
+PlayerTP_Input.TextSize = 14
+PlayerTP_Input.TextWrapped = true
+PlayerTP_Teleport.Name = &quot;PlayerTP_Teleport&quot;
+PlayerTP_Teleport.Parent = TeleportGUI
+PlayerTP_Teleport.BackgroundColor3 = Color3.new(0, 0, 0)
+PlayerTP_Teleport.BorderColor3 = Color3.new(1, 1, 1)
+PlayerTP_Teleport.BorderSizePixel = 0
+PlayerTP_Teleport.Position = UDim2.new(0, 0, 0.488693237, 0)
+PlayerTP_Teleport.Size = UDim2.new(0, 214, 0, 50)
+PlayerTP_Teleport.Font = Enum.Font.SourceSans
+PlayerTP_Teleport.Text = &quot;Teleport To Player&quot;
+PlayerTP_Teleport.TextColor3 = Color3.new(1, 1, 1)
+PlayerTP_Teleport.TextScaled = true
+PlayerTP_Teleport.TextSize = 14
+PlayerTP_Teleport.TextWrapped = true
+PlayerTP_Teleport.MouseButton1Click:connect(function()
+     local tp_namedplayer = PlayerTP_Input.Text
+    local tp_player = game:GetService(&quot;Players&quot;)[tp_namedplayer]
+    local PLR = game:GetService(&quot;Players&quot;).LocalPlayer
+    local p = PlayerTP_Input.Text
+    if tp_player then
+        for i = 1,1 do
+        wait(.08)
+        PLR.Character.HumanoidRootPart.CFrame = tp_player.Character.HumanoidRootPart.CFrame + Vector3.new(0, 0, -1)
+        end
+    end
+end)
+OpenGUI.Name = &quot;OpenGUI&quot;
+OpenGUI.Parent = PrisonLife
+OpenGUI.BackgroundColor3 = Color3.new(1, 1, 1)
+OpenGUI.Position = UDim2.new(0, 0, 0.533864558, 0)
+OpenGUI.Size = UDim2.new(0, 100, 0, 35)
+open.Name = &quot;open&quot;
+open.Parent = OpenGUI
+open.BackgroundColor3 = Color3.new(0.117647, 0.117647, 0.117647)
+open.BorderColor3 = Color3.new(0, 0, 0)
+open.Size = UDim2.new(0, 100, 0, 35)
+open.Font = Enum.Font.SourceSans
+open.Text = &quot;OPEN&quot;
+open.TextColor3 = Color3.new(1, 1, 1)
+open.TextScaled = true
+open.TextSize = 14
+open.TextWrapped = true
+open.MouseButton1Click:connect(function()
+    MainGUI.Visible = true
+    OpenGUI.Visible = false
+end)
+wait(0.5)
+game:GetService(&quot;StarterGui&quot;):SetCore(&quot;ChatMakeSystemMessage&quot;,{
+Text = (&quot;Made By: BunnyX&quot;);
+Color = Color3.new(255,0,0);
+FontSize = Enum.FontSize.Size24;
+})
+wait(0.5)
+game:GetService(&quot;StarterGui&quot;):SetCore(&quot;ChatMakeSystemMessage&quot;,{
+Text = (&quot;Added Fast Weapons, And also updated the kill all script!&quot;);
+Color = Color3.new(0,255,0);
+FontSize = Enum.FontSize.Size24;
+})
+wait(0.5)
+game:GetService(&quot;StarterGui&quot;):SetCore(&quot;ChatMakeSystemMessage&quot;,{
+Text = (&quot;Note: Enjoy the Script.Made by BunnyX so please subscribe&quot;);
+Color = Color3.new(255,255,255);
+FontSize = Enum.FontSize.Size24;
+})
