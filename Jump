@@ -1,0 +1,127 @@
+--[ Intro ]
+
+    spawn(function()
+    wait(0.2)
+local Sound = Instance.new("Sound",game:GetService("SoundService"))
+Sound.SoundId = "rbxassetid://851699118"
+Sound:Play()
+    end)
+
+
+
+--[ variables 1 ]
+local Key = "T"
+local Toggle = false
+
+
+game:GetService("UserInputService").InputBegan:Connect(function(keyobject, variable)
+  if keyobject.KeyCode == Enum.KeyCode[Key] and not variable then
+      Toggle = not Toggle
+  end
+end)
+
+
+game:GetService('RunService').Stepped:connect(function()
+  if Toggle then
+task.wait()
+game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = 50
+  end
+end)
+
+task.spawn(function()
+wait(3)
+game.StarterGui:SetCore("SendNotification", {
+  Title = "By Liver zMods";
+  Text = "Created by a Brazilian!";
+  Icon = "rbxthumb://type=Asset&id=11935866652&w=150&h=150";
+  Duration = 43.1808009918372888888888888888888888189480; })
+end)
+task.wait()
+
+
+--[ Universal ]
+--[ Iníco,  CRIAR Menu ]
+local Library = loadstring(game:HttpGet("https://pastebin.com/raw/vff1bQ9F"))()
+
+
+
+
+
+--[ Nome, Cor ] 
+local Window = Library.CreateLib("{ V1 - Injector [BETA] } Enable jump in games", "BloodTheme")
+
+
+
+
+
+--[ Abas, Menus ]
+local Aba1 = Window:NewTab("Main")
+local Aba2 = Window:NewTab("Others")
+local Aba3 = Window:NewTab("Credit: Liver zMods")
+
+
+
+--[ Determinadores de "botões" e "toggles" ! ] 
+local JumpsSection = Aba1:NewSection("Jumps")
+local OthSection = Aba2:NewSection("Other Scripts")
+local CreSection = Aba3:NewSection("Liver zMods")
+
+
+--[ botão Aba1 ]
+JumpsSection:NewToggle("Enable Jump { V1 }", "Some games turn off jumping, this Script will enable it again!", function(state)
+    if state then
+game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = 50
+else
+game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = DisableJump
+end
+end)
+
+local JumpsSection = Aba1:NewSection("if V1 does not work, try V2")
+JumpsSection:NewToggle("Enable Jump { V2 }", "Some games turn off jumping, this Script will enable it again!", function()
+    if state then
+local vim = game:service("VirtualInputManager")
+vim:SendKeyEvent(true, "T", false, game)
+else
+local vim = game:service("VirtualInputManager")
+vim:SendKeyEvent(true, "T", false, game) task.wait()
+game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = DisableJump
+end
+end)
+
+    OthSection:NewButton("F3X ( TOOL )", "and useful", function()
+        loadstring(game:GetObjects("rbxassetid://6695644299")[1].Source)()
+    end)
+    OthSection:NewButton("BTOOLS ( TOOL )", "and useful", function()
+     Instance.new("HopperBin", game.Players.LocalPlayer.Backpack).BinType = 4
+    end)
+    OthSection:NewButton("Infinite Yield", "admins command", function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+    end)     
+ OthSection:NewButton("Keyboard", "And Used A Lot On Mobile", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/advxzivhsjjdhxhsidifvsh/mobkeyboard/main/main.txt", true))()
+    end)    
+OthSection:NewButton("Fly Gui ", "Gui Fly made by me", function()
+loadstring(game:HttpGet("https://pastebin.com/raw/TGxqcQdY", true))()
+end)
+           
+    OthSection:NewButton("Fly Car Gui", "car flights, support for all executors Mobiles", function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/LiverMods/ModsScriptsGames-/main/FlyCar'))()
+    end)    
+
+    OthSection:NewKeybind("Press E to get TpTool", "use to teleport", Enum.KeyCode.E, function()
+	mouse = game.Players.LocalPlayer:GetMouse()
+tool = Instance.new("Tool")
+tool.RequiresHandle = false
+tool.Name = "TpTool"
+tool.Activated:connect(function()
+local pos = mouse.Hit+Vector3.new(0,2.5,0)
+pos = CFrame.new(pos.X,pos.Y,pos.Z)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
+end)
+tool.Parent = game.Players.LocalPlayer.Backpack
+end)  
+
+
+
+--[ variables 2 ]
+local DisableJump = -9999999999999999999999999999999
