@@ -83,7 +83,7 @@ local vim = game:service("VirtualInputManager")
 vim:SendKeyEvent(true, "T", false, game)
 else
 local vim = game:service("VirtualInputManager")
-vim:SendKeyEvent(true, "T", false, game) task.wait()
+vim:SendKeyEvent(true, "T", false, game) task.wait(0.3)
 game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = DisableJump
 end
 end)
