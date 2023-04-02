@@ -23,16 +23,8 @@ end
 while task.wait() do
     for _,v in pairs(game:GetService("CoreGui").RobloxGui.Backpack:GetDescendants()) do
         if v.ClassName == "TextButton" then
-            v.BackgroundTransparency = 0.6
-            v.BackgroundColor3 = Color3.fromRGB(22, 29, 50)
-            task.spawn(function()
-while true do
-	for hue = 0, 255, 4 do
-		v.BackgroundColor3 = Color3.fromHSV(hue/256, 1, 1) 
-		wait()
-	end
-end
-end)
+            v.BackgroundTransparency = 0.8
+            v.BackgroundColor3 = Color3.fromRGB(155, 0, 0)
         end
     end
 end
