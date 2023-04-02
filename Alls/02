@@ -1,0 +1,14 @@
+local notify = game.StarterGui 
+local Basic = Instance.new('BindableFunction')
+function Basic.OnInvoke(got)
+	if got == '✅' then
+loadstring(game:HttpGet("https://raw.githubusercontent.com/LiverMods/raw/main/Alls/01"))()
+	end
+end
+	notify:SetCore('SendNotification', {
+	        Title = 'quer carregar?',
+		Text = '???',
+		Duration = math.huge,
+		Callback = Basic,
+		Button1 = '✅',
+		Button2 = '❌' })
