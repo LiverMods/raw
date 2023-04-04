@@ -90,6 +90,7 @@ local deis = {
 
 
 for _ = 1, 3 do
+task.wait(1)
 damage:FireServer(unpack(um))
 damage:FireServer(unpack(dois))
 damage:FireServer(unpack(tres))
