@@ -89,7 +89,7 @@ local deis = {
 
 
 
-for _ = 1, 25 do
+for _ = 1, 3 do
 damage:FireServer(unpack(um))
 damage:FireServer(unpack(dois))
 damage:FireServer(unpack(tres))
