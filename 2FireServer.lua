@@ -1,3 +1,5 @@
+local damage = workspace.__THINGS.__REMOTES.giant_dealdamage
+
 damage:FireServer(unpack(um))
 damage:FireServer(unpack(dois))
 damage:FireServer(unpack(tres))
