@@ -6,6 +6,8 @@ m.Parent = game:GetService("CoreGui").RobloxGui.Backpack.Inventory
 x.Parent = game:GetService("CoreGui").RobloxGui.Backpack.Inventory
 s.Parent = x
 x.Size = game:GetService("CoreGui").RobloxGui.Backpack.Inventory.Size
+x.Image = "https://www.roblox.com/Thumbs/Asset.ashx?width=420&height=420&assetId=12972554958"
+x.ImageTransparency = 0
 x.ZIndex = 0
 x.BackgroundTransparency = 0.6
 
