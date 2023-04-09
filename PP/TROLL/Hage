@@ -29,14 +29,16 @@ PPlarge.BackgroundColor3 = Color3.fromRGB(32, 32, 32)
 PPlarge.Position = UDim2.new(0.0483, 0, 0.388448981, 0)
 PPlarge.Size = UDim2.new(0, 82, 0, 34)
 PPlarge.Font = Enum.Font.Kalam
-PPlarge.Text = "[ PP ]"
-PPlarge.TextSize = 11.900
+PPlarge.Text = "[ TOGGLE ]"
+PPlarge.TextSize = 18.900
 PPlarge.MouseButton1Down:connect(function()
-local get = game:service("VirtualInputManager")
-get:SendKeyEvent(true, "LeftControl", false, game)
-      local Sound = Instance.new("Sound",game:GetService("SoundService")) Sound.SoundId = "rbxassetid://9116673678"
+      local Sound = Instance.new("Sound",game:GetService("SoundService"))
+Sound.SoundId = "rbxassetid://12222225"
+Sound.Volume = 0.02
 task.wait(0.1)
 Sound:Play()
+local get = game:service("VirtualInputManager")
+get:SendKeyEvent(true, "Q", false, game)
  end)
 
 task.spawn(function()
@@ -79,155 +81,40 @@ while true do
 	end
 end
 end)
-
 spawn(function()
---[[
-WARNING: R6 ONLY
-Minimum of 4 Hats.
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local Show = Instance.new("TextButton")
 
-Any hats work, but I recommend hats that are sized 1,1,1 for a better experience. 
-It does not offset based on hat size rather a 1 stud offset per hat.
-Have Fun!
+ScreenGui.Parent = game.CoreGui
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(40,40,40)
+Frame.Position = UDim2.new(0, 0, 0.40, 0)
+Frame.Size = UDim2.new(0, 70, 0, 30)
 
-Comment if you have questions, need help, or got problems.
-]]--
-
-local function align(i,v)
-    local att0 = Instance.new("Attachment", i)
-    att0.Position = Vector3.new(0,0,0)
-    local att1 = Instance.new("Attachment", v)
-    att1.Position = Vector3.new(0,5,0)
-    att1.Rotation = Vector3.new(0,0,0)
-    local AP = Instance.new("AlignPosition", i)
-    AP.Attachment0 = att0
-    AP.Attachment1 = att1
-    AP.RigidityEnabled = false
-    AP.ReactionForceEnabled = false
-    AP.ApplyAtCenterOfMass = true
-    AP.MaxForce = 9999999
-    AP.MaxVelocity = math.huge
-    AP.Responsiveness = 100000
-    local AO = Instance.new("AlignOrientation", i)
-    AO.Attachment0 = att0
-    AO.Attachment1 = att1
-    AO.ReactionTorqueEnabled = true
-    AO.PrimaryAxisOnly = false
-    AO.MaxTorque = 9999999
-    AO.MaxAngularVelocity = math.huge
-    AO.Responsiveness = 100000
-   return att1 
-end
-
-local Hats = {}
-local HatsPosition = {}
-
-function FindPlayer(Name)
-    for _,player in pairs(game:GetService("Players"):GetPlayers()) do
-        local PlayerName = string.lower(player.Name)
-        Name = string.lower(Name)
-        if string.find(PlayerName, Name) then
-            return player
-        end
-    end
-end
-
-local Dick = false;
-
-local Connections = {}
-
-local Character = game.Players.LocalPlayer.Character
-
-
-for index,value in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-    if value:IsA("Accessory") then
-        value.Handle.Massless = true
-        value.Handle.AccessoryWeld:Destroy()
-        pcall(function()
-            value.Handle.SpecialMesh:Destroy()
-        end)
-        pcall(function()
-            value.Handle.Mesh:Destroy()
-        end)
-        table.insert(Hats, value.Handle)
-        local HatAtt = align(value.Handle, Character["Torso"])
-        table.insert(HatsPosition, HatAtt)
-    end
-end
-
-
-for i,hat in pairs(Hats) do
-    if Dick then
-        if i == 1 then
-            HatsPosition[i].Position = (CFrame.new(-0.55,-1.35,-1)).Position
-        else
-            if i == 2 then
-                HatsPosition[i].Position = (CFrame.new(0.55,-1.35,-1)).Position
-            else
-                HatsPosition[i].Position = (CFrame.new(0,-1,(i - 2) * -1)).Position
-            end
-        end 
-    else
-        HatsPosition[i].Position = Vector3.new(0,0,0)
-    end
-end
-
-
-local Key = game:GetService("UserInputService").InputBegan:Connect(function(input, gameProcessedEvent)
-    if not gameProcessedEvent then
-        if input.KeyCode == Enum.KeyCode.P then -- Key bind to retract and pull out
-            Dick = not Dick
-            if not Dick then
-                for i,hat in pairs(Hats) do
-                    HatsPosition[i].Position = Vector3.new(0,0,0)
-                end
-            else
-                if Dick then
-                    for i,hat in pairs(Hats) do
-                        if Dick then
-                            if i == 1 then
-                                HatsPosition[i].Position = (CFrame.new(-0.55,-1.35,-1)).Position
-                            else
-                                if i == 2 then
-                                    HatsPosition[i].Position = (CFrame.new(0.55,-1.35,-1)).Position
-                                else
-                                    HatsPosition[i].Position = (CFrame.new(0,-1,(i - 2) * -1)).Position
-                                end
-                            end
-                        end 
-                    end
-                end
-            end
-        end
-    end
+Show.Parent = Frame
+Show.BackgroundColor3 = Color3.fromRGB(40,40,40)
+Show.Size = UDim2.new(0, 70, 0, 30)
+Show.Font = Enum.Font.Kalam
+Show.Text = "PP"
+Show.TextColor3 = Color3.fromRGB(0, 255, 255)
+Show.TextSize = 23.000
+Show.MouseButton1Click:connect(function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/LiverMods/raw/main/PP/TROLL/V2"))()
 end)
-table.insert(Connections, Key)
-
-local ActivateNetless = true
-
-
---[[Netless]]--
-settings().Physics.PhysicsEnvironmentalThrottle = Enum.EnviromentalPhysicsThrottle.Disabled
-settings().Physics.AllowSleep = false
-game.Players.LocalPlayer.ReplicationFocus = workspace
-
-for _,part in next, game:GetService("Players").LocalPlayer.Character:GetDescendants() do
-    if part:IsA("BasePart") and part.Name ~="HumanoidRootPart" then 
-        Netless = game:GetService("RunService").Heartbeat:Connect(function()
-            if ActivateNetless then
-                part.Velocity = Vector3.new(-29.999,0,0)
-                part.RotVelocity = Vector3.new(0,0,0)
-            end
-        end)
-        table.insert(Connections, Netless)
-    end
+task.spawn(function()
+while true do
+	for hue = 0, 255, 4 do
+		Show.BorderColor3 = Color3.fromHSV(hue/256, 1, 1) 
+        Frame.BorderColor3 = Color3.fromHSV(hue/256, 1, 1) 
+		wait()
+	end
 end
-
-
-Character.Humanoid.Died:Connect(function()
-    for index,connect in pairs(Connections) do
-        connect:Disconnect()
-    end
 end)
+end)
+
+
+
 
 
 spawn(function()
@@ -236,5 +123,4 @@ game.StarterGui:SetCore("SendNotification", {
 	Text = "created by Brazilian!";
     Icon = "rbxthumb://type=Asset&id=11935866652&w=150&h=150";
     Duration = 20; })
-end)
 end)
