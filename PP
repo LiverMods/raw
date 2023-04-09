@@ -1,0 +1,240 @@
+spawn(function()
+local ScreenGui = Instance.new("ScreenGui")
+local main = Instance.new("Frame")
+local label = Instance.new("TextLabel")
+local Rawnder = Instance.new("TextButton")
+ScreenGui.Parent = game.CoreGui
+main.Name = "main"
+main.Parent = ScreenGui
+main.BackgroundColor3 = Color3.fromRGB(20,20,20)
+main.Position = UDim2.new(0.40427351, 0, 0.34591195, 0)
+main.Size = UDim2.new(0, 90, 0, 65)
+main.Active = true
+main.Draggable = true
+
+label.Name = "label"
+label.Parent = main
+label.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+label.Size = UDim2.new(0, 90, 0, 20)
+label.Font = Enum.Font.SourceSans
+label.Text = "[ Liver zMods ]"
+label.TextColor3 = Color3.fromRGB(00, 99, 390)
+label.TextScaled = true
+label.TextSize = 0.100
+label.TextWrapped = true
+
+Rawnder.Name = "Rawnder"
+Rawnder.Parent = main
+Rawnder.BackgroundColor3 = Color3.fromRGB(32, 32, 32)
+Rawnder.Position = UDim2.new(0.0483, 0, 0.388448981, 0)
+Rawnder.Size = UDim2.new(0, 82, 0, 34)
+Rawnder.Font = Enum.Font.Kalam
+Rawnder.Text = "[ PP ]"
+Rawnder.TextSize = 11.900
+Rawnder.MouseButton1Down:connect(function()
+local get = game:service("VirtualInputManager")
+get:SendKeyEvent(true, "LeftControl", false, game)
+      local Sound = Instance.new("Sound",game:GetService("SoundService")) Sound.SoundId = "rbxassetid://9119720940"
+task.wait(0.1)
+Sound:Play()
+ end)
+
+task.spawn(function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Lolboxo/SharkBiteV3/main/SharkBiteV3'))()
+end)
+
+task.spawn(function()
+while true do
+	for hue = 0, 255, 4 do
+		main.BorderColor3 = Color3.fromHSV(hue/256, 1, 1)
+		wait()
+	end
+end
+end) 
+
+task.spawn(function()
+while true do
+	for hue = 0, 255, 4 do
+		Rawnder.BorderColor3 = Color3.fromHSV(hue/256, 1, 1)
+		wait()
+	end
+end
+end)
+
+task.spawn(function()
+while true do
+	for hue = 0, 255, 4 do
+		label.BorderColor3 = Color3.fromHSV(hue/256, 1, 1) 
+		wait()
+	end
+end
+end)
+
+
+while true do
+	for hue = 0, 255, 1 do
+		Rawnder.TextColor3 = Color3.fromHSV(hue/256, 1, 1)
+
+		wait()
+	end
+end
+end)
+
+spawn(function()
+--[[
+WARNING: R6 ONLY
+Minimum of 4 Hats.
+
+Any hats work, but I recommend hats that are sized 1,1,1 for a better experience. 
+It does not offset based on hat size rather a 1 stud offset per hat.
+Have Fun!
+
+Comment if you have questions, need help, or got problems.
+]]--
+
+local function align(i,v)
+    local att0 = Instance.new("Attachment", i)
+    att0.Position = Vector3.new(0,0,0)
+    local att1 = Instance.new("Attachment", v)
+    att1.Position = Vector3.new(0,5,0)
+    att1.Rotation = Vector3.new(0,0,0)
+    local AP = Instance.new("AlignPosition", i)
+    AP.Attachment0 = att0
+    AP.Attachment1 = att1
+    AP.RigidityEnabled = false
+    AP.ReactionForceEnabled = false
+    AP.ApplyAtCenterOfMass = true
+    AP.MaxForce = 9999999
+    AP.MaxVelocity = math.huge
+    AP.Responsiveness = 100000
+    local AO = Instance.new("AlignOrientation", i)
+    AO.Attachment0 = att0
+    AO.Attachment1 = att1
+    AO.ReactionTorqueEnabled = true
+    AO.PrimaryAxisOnly = false
+    AO.MaxTorque = 9999999
+    AO.MaxAngularVelocity = math.huge
+    AO.Responsiveness = 100000
+   return att1 
+end
+
+local Hats = {}
+local HatsPosition = {}
+
+function FindPlayer(Name)
+    for _,player in pairs(game:GetService("Players"):GetPlayers()) do
+        local PlayerName = string.lower(player.Name)
+        Name = string.lower(Name)
+        if string.find(PlayerName, Name) then
+            return player
+        end
+    end
+end
+
+local Dick = false;
+
+local Connections = {}
+
+local Character = game.Players.LocalPlayer.Character
+
+
+for index,value in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+    if value:IsA("Accessory") then
+        value.Handle.Massless = true
+        value.Handle.AccessoryWeld:Destroy()
+        pcall(function()
+            value.Handle.SpecialMesh:Destroy()
+        end)
+        pcall(function()
+            value.Handle.Mesh:Destroy()
+        end)
+        table.insert(Hats, value.Handle)
+        local HatAtt = align(value.Handle, Character["Torso"])
+        table.insert(HatsPosition, HatAtt)
+    end
+end
+
+
+for i,hat in pairs(Hats) do
+    if Dick then
+        if i == 1 then
+            HatsPosition[i].Position = (CFrame.new(-0.55,-1.35,-1)).Position
+        else
+            if i == 2 then
+                HatsPosition[i].Position = (CFrame.new(0.55,-1.35,-1)).Position
+            else
+                HatsPosition[i].Position = (CFrame.new(0,-1,(i - 2) * -1)).Position
+            end
+        end 
+    else
+        HatsPosition[i].Position = Vector3.new(0,0,0)
+    end
+end
+
+
+local Key = game:GetService("UserInputService").InputBegan:Connect(function(input, gameProcessedEvent)
+    if not gameProcessedEvent then
+        if input.KeyCode == Enum.KeyCode.P then -- Key bind to retract and pull out
+            Dick = not Dick
+            if not Dick then
+                for i,hat in pairs(Hats) do
+                    HatsPosition[i].Position = Vector3.new(0,0,0)
+                end
+            else
+                if Dick then
+                    for i,hat in pairs(Hats) do
+                        if Dick then
+                            if i == 1 then
+                                HatsPosition[i].Position = (CFrame.new(-0.55,-1.35,-1)).Position
+                            else
+                                if i == 2 then
+                                    HatsPosition[i].Position = (CFrame.new(0.55,-1.35,-1)).Position
+                                else
+                                    HatsPosition[i].Position = (CFrame.new(0,-1,(i - 2) * -1)).Position
+                                end
+                            end
+                        end 
+                    end
+                end
+            end
+        end
+    end
+end)
+table.insert(Connections, Key)
+
+local ActivateNetless = true
+
+
+--[[Netless]]--
+settings().Physics.PhysicsEnvironmentalThrottle = Enum.EnviromentalPhysicsThrottle.Disabled
+settings().Physics.AllowSleep = false
+game.Players.LocalPlayer.ReplicationFocus = workspace
+
+for _,part in next, game:GetService("Players").LocalPlayer.Character:GetDescendants() do
+    if part:IsA("BasePart") and part.Name ~="HumanoidRootPart" then 
+        Netless = game:GetService("RunService").Heartbeat:Connect(function()
+            if ActivateNetless then
+                part.Velocity = Vector3.new(-29.999,0,0)
+                part.RotVelocity = Vector3.new(0,0,0)
+            end
+        end)
+        table.insert(Connections, Netless)
+    end
+end
+
+
+Character.Humanoid.Died:Connect(function()
+    for index,connect in pairs(Connections) do
+        connect:Disconnect()
+    end
+end)
+
+
+spawn(function()
+game.StarterGui:SetCore("SendNotification", {
+	Title = "By Liver zMods";
+	Text = "created by Brazilian!";
+    Icon = "rbxthumb://type=Asset&id=11935866652&w=150&h=150";
+    Duration = 20; })
+end)
+end)
