@@ -11,7 +11,7 @@ main.Position = UDim2.new(0.40427351, 0, 0.34591195, 0)
 main.Size = UDim2.new(0, 90, 0, 65)
 main.Active = true
 main.Draggable = true
-
+wait(0.3)
 label.Name = "label"
 label.Parent = main
 label.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
