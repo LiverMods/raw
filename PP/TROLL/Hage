@@ -12,8 +12,6 @@ main.Size = UDim2.new(0, 90, 0, 65)
 main.Active = true
 main.Draggable = true
 
-wait(0.5)
-
 PP.Name = "PP"
 PP.Parent = main
 PP.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
@@ -36,7 +34,7 @@ PPlarge.TextSize = 11.900
 PPlarge.MouseButton1Down:connect(function()
 local get = game:service("VirtualInputManager")
 get:SendKeyEvent(true, "LeftControl", false, game)
-      local Sound = Instance.new("Sound",game:GetService("SoundService")) Sound.SoundId = "rbxassetid://9119720940"
+      local Sound = Instance.new("Sound",game:GetService("SoundService")) Sound.SoundId = "rbxassetid://9116673678"
 task.wait(0.1)
 Sound:Play()
  end)
