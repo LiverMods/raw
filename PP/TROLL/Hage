@@ -1,8 +1,8 @@
 spawn(function()
 local ScreenGui = Instance.new("ScreenGui")
 local main = Instance.new("Frame")
-local label = Instance.new("TextLabel")
-local Rawnder = Instance.new("TextButton")
+local PP = Instance.new("TextLabel")
+local PPlarge = Instance.new("TextButton")
 ScreenGui.Parent = game.CoreGui
 main.Name = "main"
 main.Parent = ScreenGui
@@ -11,27 +11,29 @@ main.Position = UDim2.new(0.40427351, 0, 0.34591195, 0)
 main.Size = UDim2.new(0, 90, 0, 65)
 main.Active = true
 main.Draggable = true
-wait(0.4)
-label.Name = "label"
-label.Parent = main
-label.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-label.Size = UDim2.new(0, 90, 0, 20)
-label.Font = Enum.Font.SourceSans
-label.Text = "[ Liver zMods ]"
-label.TextColor3 = Color3.fromRGB(00, 99, 390)
-label.TextScaled = true
-label.TextSize = 0.100
-label.TextWrapped = true
 
-Rawnder.Name = "Rawnder"
-Rawnder.Parent = main
-Rawnder.BackgroundColor3 = Color3.fromRGB(32, 32, 32)
-Rawnder.Position = UDim2.new(0.0483, 0, 0.388448981, 0)
-Rawnder.Size = UDim2.new(0, 82, 0, 34)
-Rawnder.Font = Enum.Font.Kalam
-Rawnder.Text = "[ PP ]"
-Rawnder.TextSize = 11.900
-Rawnder.MouseButton1Down:connect(function()
+wait(0.5)
+
+PP.Name = "PP"
+PP.Parent = main
+PP.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+PP.Size = UDim2.new(0, 90, 0, 20)
+PP.Font = Enum.Font.SourceSans
+PP.Text = "[ Liver zMods ]"
+PP.TextColor3 = Color3.fromRGB(00, 99, 390)
+PP.TextScaled = true
+PP.TextSize = 0.100
+PP.TextWrapped = true
+
+PPlarge.Name = "PPlarge"
+PPlarge.Parent = main
+PPlarge.BackgroundColor3 = Color3.fromRGB(32, 32, 32)
+PPlarge.Position = UDim2.new(0.0483, 0, 0.388448981, 0)
+PPlarge.Size = UDim2.new(0, 82, 0, 34)
+PPlarge.Font = Enum.Font.Kalam
+PPlarge.Text = "[ PP ]"
+PPlarge.TextSize = 11.900
+PPlarge.MouseButton1Down:connect(function()
 local get = game:service("VirtualInputManager")
 get:SendKeyEvent(true, "LeftControl", false, game)
       local Sound = Instance.new("Sound",game:GetService("SoundService")) Sound.SoundId = "rbxassetid://9119720940"
@@ -55,7 +57,7 @@ end)
 task.spawn(function()
 while true do
 	for hue = 0, 255, 4 do
-		Rawnder.BorderColor3 = Color3.fromHSV(hue/256, 1, 1)
+		PPlarge.BorderColor3 = Color3.fromHSV(hue/256, 1, 1)
 		wait()
 	end
 end
@@ -64,7 +66,7 @@ end)
 task.spawn(function()
 while true do
 	for hue = 0, 255, 4 do
-		label.BorderColor3 = Color3.fromHSV(hue/256, 1, 1) 
+		PP.BorderColor3 = Color3.fromHSV(hue/256, 1, 1) 
 		wait()
 	end
 end
@@ -73,7 +75,7 @@ end)
 
 while true do
 	for hue = 0, 255, 1 do
-		Rawnder.TextColor3 = Color3.fromHSV(hue/256, 1, 1)
+		PPlarge.TextColor3 = Color3.fromHSV(hue/256, 1, 1)
 
 		wait()
 	end
