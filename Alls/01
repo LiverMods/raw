@@ -9,7 +9,7 @@ x.Size = game:GetService("CoreGui").RobloxGui.Backpack.Inventory.Size
 x.Image = "https://www.roblox.com/Thumbs/Asset.ashx?width=420&height=420&assetId=12972554958"
 x.ImageTransparency = 0
 x.ZIndex = 0
-x.BackgroundTransparency = 0.6
+x.BackgroundTransparency = 0.8
 
 
 for _,v in pairs(game:GetService("CoreGui").RobloxGui.Backpack:GetDescendants()) do
@@ -24,7 +24,7 @@ while task.wait() do
     for _,v in pairs(game:GetService("CoreGui").RobloxGui.Backpack:GetDescendants()) do
         if v.ClassName == "TextButton" then
             v.BackgroundTransparency = 0.4
-            v.BackgroundColor3 = Color3.fromRGB(30, 20, 20)
+            v.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
         end
     end
 end
