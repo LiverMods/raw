@@ -1,0 +1,157 @@
+game.StarterGui:SetCore("SendNotification", {
+	Title = "Attention";
+	Text = "turn it off when the match is over!";
+    Duration = 60;
+})    
+good = true
+boolean = false
+local ScreenGui = Instance.new("ScreenGui")
+local main = Instance.new("Frame")
+local label = Instance.new("TextLabel")
+local Rawnder = Instance.new("TextButton")
+
+ScreenGui.Parent = game.CoreGui
+main.Name = "main"
+main.Parent = ScreenGui
+main.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+main.Position = UDim2.new(0.40427351, 0, 0.34591195, 0)
+main.Size = UDim2.new(0, 90, 0, 65)
+main.Active = true
+main.Draggable = true
+
+label.Name = "label"
+label.Parent = main
+label.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+label.Size = UDim2.new(0, 90, 0, 20)
+label.Font = Enum.Font.SourceSans
+label.Text = "ESP gui V4"
+label.TextColor3 = Color3.fromRGB(0, 99, 390)
+label.TextScaled = true
+label.TextSize = 2.580
+label.TextWrapped = true
+
+Rawnder.Name = "Rawnder"
+Rawnder.Parent = main
+Rawnder.BackgroundColor3 = Color3.fromRGB(32, 32, 32)
+Rawnder.Position = UDim2.new(0.0483, 0, 0.388448981, 0)
+Rawnder.Size = UDim2.new(0, 82, 0, 34)
+Rawnder.Font = Enum.Font.Kalam
+Rawnder.Text = "Off"
+Rawnder.TextColor3 = Color3.fromRGB(49, 180, 198)
+Rawnder.TextSize = 19.892
+Rawnder.MouseButton1Down:connect(function()
+    boolean = not boolean
+    Rawnder.Text = boolean and "ON" or "OFF"
+    task.wait()
+    getgenv().enabled = boolean
+    getgenv().filltrans = 0.85
+    getgenv().outlinetrans = 0.1
+
+    local localPlayer = game.Players.LocalPlayer
+    local function checkAndCreateHighlight(player)
+        if player == localPlayer.Character then
+            return
+        end
+
+        local playerName = player.Name
+        local Traitor = player:FindFirstChild("Traitor")
+        local enemyObject = player:FindFirstChild("Enemy")
+        local dn = player:FindFirstChild("IsActive")
+        local holder = game.CoreGui:FindFirstChild("ESPHolder") or Instance.new("Folder")
+
+        if enabled == false then
+            holder:Destroy()
+            return
+        end
+
+        if holder.Name == "Folder" then
+            holder.Name = "ESPHolder"
+            holder.Parent = game.CoreGui
+        end
+
+        if uselocalplayer == false and holder:FindFirstChild(game.Players.LocalPlayer.Name) then
+            holder:FindFirstChild(game.Players.LocalPlayer.Name):Destroy()
+        end
+
+        local chr = player
+        if chr ~= nil then
+            local esp = holder:FindFirstChild(playerName) or Instance.new("Highlight")
+            esp.Name = playerName
+            if uselocalplayer == false and esp.Name == game.Players.LocalPlayer.Name then
+                return
+            end
+            esp.Parent = holder
+            if enemyObject and not dn then
+                esp.FillColor = Color3.new(1, 0, 0)
+                esp.OutlineColor = Color3.new(1, 0, 0)
+            elseif dn then
+                esp.FillColor = Color3.new(1, 1, 0)
+                esp.OutlineColor = Color3.new(1, 1, 0)
+            elseif not dn and Traitor then
+                task.wait()
+                task.spawn(function()
+                    task.wait()
+                    esp.FillColor = Color3.new(1, 0, 0)
+                    esp.OutlineColor = Color3.new(1, 0, 0)
+                 end)
+                task.wait(0.6)
+                task.spawn(function()
+                    task.wait()
+                    esp.FillColor = Color3.new(0, 1, 0)
+                    esp.OutlineColor = Color3.new(0, 1, 0)
+                end)
+                task.wait(0.6)
+            elseif not Traitor then
+                esp.FillColor = Color3.new(0, 1, 0)
+                esp.OutlineColor = Color3.new(0, 1, 0)
+            end
+            esp.FillTransparency = filltrans
+            esp.OutlineTransparency = outlinetrans
+            esp.Adornee = chr
+            esp.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+        end
+    end
+
+    local function onPlayerAdded(player)
+        checkAndCreateHighlight(player.Character)
+    end
+
+    game.Players.PlayerAdded:Connect(function(player)
+        checkAndCreateHighlight(player.Character)
+    end)
+
+    local namesToIgnore = {
+        "Bess",
+        "Ombra",
+        "MrBliss"
+    }
+
+    local function checkAndCreateHighlightForObjects()
+        for _, object in ipairs(game.Workspace:GetDescendants()) do
+            if object:IsA("Model") and object:FindFirstChild("Humanoid") then
+                local playerName = object.Name
+                local ignore = false
+
+                for _, name in ipairs(namesToIgnore) do
+                    if playerName == name then
+                        ignore = true
+                        break
+                    end
+                end
+
+                if not ignore then
+                    checkAndCreateHighlight(object)
+                end
+            end
+        end
+    end
+
+    checkAndCreateHighlightForObjects()
+
+    coroutine.wrap(function()
+        while enabled do
+            task.wait()
+            checkAndCreateHighlightForObjects()
+        end
+    end)()
+end)
