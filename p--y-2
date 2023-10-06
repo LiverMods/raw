@@ -1,0 +1,416 @@
+-- Script de carregamento
+--// check game //
+local pulse = true
+nelhaudhqb10 = 16
+local Prr = game.Players.LocalPlayer
+local camPos = game.Workspace.CurrentCamera
+local CPs = camPos.CameraSubject
+local charr = game:GetService("Players").LocalPlayer.Character
+local bolet = charr:FindFirstChildOfClass("Humanoid")
+local notify = game.StarterGui 
+local Basic = Instance.new('BindableFunction')
+local Ui = Instance.new("UICorner")
+Ui.CornerRadius = UDim.new(0.4, 0)
+
+function Basic.OnInvoke(got)
+        local message = Instance.new("Message", workspace)
+        task.spawn(function()
+            message.Text = "Loading"
+        end)
+        wait(1.2)
+        gds = true
+        message:Destroy()
+
+    if got == '✅' then
+        if game.PlaceId == 4623386862 or game.PlaceId == 5661005779 or 5247067896 then goods = true else
+            local player = game.Players:GetPlayerFromCharacter(char)
+            local teleportService = game:GetService("TeleportService")
+            
+            local Sound = Instance.new("Sound", game:GetService("SoundService"))
+            Sound.SoundId = "rbxassetid://2323663829"
+            Sound:Play()
+
+            local dealership = Instance.new('BindableFunction')
+            function dealership.OnInvoke(state)
+                if state == 'join Piggy' then
+                    teleportService:Teleport(4623386862, player)
+                end
+            end
+            while not gds do task.wait(0.1) end
+            game.StarterGui:SetCore('SendNotification', {
+                Title = "Error";
+                Text = "no support for this game";
+                Icon = "rbxthumb://type=Asset&id=12294607996&w=150&h=150";
+                Duration = math.huge,
+                Callback = dealership,
+                Button1 = 'join Piggy',
+                Button2 = '❌'
+            })
+            return
+        end
+    end
+end
+
+notify:SetCore('SendNotification', {
+    Title = 'load the script',
+    Text = 'Want to Load Script. This was created to prevent loading 2 Scripts at once',
+    Duration = math.huge,
+    Callback = Basic,
+    Button1 = '✅',
+    Button2 = '❌'
+})
+
+while not goods do task.wait(0.5) end
+
+--// end check game //
+
+local function randomString()
+    local length = math.random(17,45)
+    local array = {}
+    for i = 1, length do
+        array[i] = string.char(math.random(32, 126))
+    end
+    return table.concat(array)
+end
+
+spawn(function()
+    coroutine.wrap(function()
+        task.spawn(function()
+            local blur = Instance.new("BlurEffect")
+            local Ui = Instance.new("UICorner")
+            Ui.CornerRadius = UDim.new(0.2, 0)
+            blur.Parent = game.Lighting
+            blur.Enabled = false
+
+            local ScreenGui = Instance.new("ScreenGui")
+            ScreenGui.Name = "RobloxGui5"
+            ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+            ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+            Ui.Parent = ScreenGui
+
+            local BackgroundImage = Instance.new("ImageLabel")
+            BackgroundImage.Name = "BackgroundImage"
+            BackgroundImage.BackgroundTransparency = 1
+            BackgroundImage.Position = UDim2.new(0.5, -250, 0.5, -150)
+            BackgroundImage.Size = UDim2.new(0, 500, 0, 300)
+            BackgroundImage.Image = "https://www.example.com/background.jpg"
+            BackgroundImage.Parent = ScreenGui
+
+            local Frame = Instance.new("Frame")
+            Frame.Name = "ProgressFrame"
+            Frame.Size = UDim2.new(0, 400, 0, 100)
+            Frame.Position = UDim2.new(0.5, -200, 0.5, -50)
+            Frame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+            Frame.BackgroundTransparency = 0.5
+            Frame.BorderSizePixel = 0
+            Frame.Parent = ScreenGui
+            Ui.Parent = Frame
+
+            local TextLabel = Instance.new("TextLabel")
+            TextLabel.Name = "ProgressText"
+            TextLabel.Size = UDim2.new(1, 0, 0, 50)
+            TextLabel.Position = UDim2.new(0, 0, 0.06, 0)
+            TextLabel.Text = "Loading..."
+            TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+            TextLabel.BackgroundTransparency = 1
+            TextLabel.TextScaled = true
+            TextLabel.Font = Enum.Font.GothamBold
+            TextLabel.Parent = Frame
+            Ui.Parent = TextLabel
+
+            local Background = Instance.new("Frame")
+            Background.Name = "Background"
+            Background.Size = UDim2.new(0.8, 0, 0, 21)
+            Background.Position = UDim2.new(0.1, 0, 0.73, -5)
+            Background.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+            Background.BorderSizePixel = 0
+            Background.Parent = Frame
+            Ui.Parent = Background
+
+            local Progress = Instance.new("Frame")
+            Progress.Name = "Progress"
+            Progress.Size = UDim2.new(0, 0, 1, 0)
+            Progress.BackgroundColor3 = Color3.fromRGB(30, 145, 255)
+            Progress.BorderSizePixel = 0
+            Progress.Parent = Background
+            Ui.Parent = Progress
+
+            function updateProgress(percent)
+                Progress:TweenSize(UDim2.new(percent, 0, 1, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Linear, 0.2, true)
+                TextLabel.Text = string.format("Loading... %d%%", percent * 100)
+            end
+
+            blur.Enabled = true
+
+            for i = 1, 100, 0.75 do
+                updateProgress(i / 100)
+                local number = i
+
+                task.wait()
+                task.spawn(function()
+                    if number >= 76 then
+                        wait()
+                        return
+                    end
+                end)
+            end
+
+            wait(2)
+
+            ScreenGui:Destroy()
+            blur.Enabled = false
+        end)
+    end)()
+end)
+task.wait(2.5)
+mobile = true
+loadstring(game:HttpGet("https://raw.githubusercontent.com/LiverMods/xRawnder/main/Library/Cmds_Chat"))();
+
+-- Créditos
+
+spawn(function()
+    local message = Instance.new("Message", workspace)
+    task.wait(1)    
+    message.Text = "Made by Liver zMods { V6 }"
+    wait(4.3)
+    message:Destroy()
+end)
+task.wait(0.2)
+
+warn("——————————————————")
+print("——————{ Success }——————")
+warn("——————————————————")
+
+coroutine.wrap(function()
+    chat_Message("————Commands [BETA]————", xrawnder, Enum.Font.SciFi)
+    chat_Message("• fly", xrawnder, Enum.Font.SciFi)
+    chat_Message("• noclip", xrawnder, Enum.Font.SciFi)
+    chat_Message("• esp", xrawnder, Enum.Font.SciFi)
+    chat_Message("• ws [enter the number]", xrawnder, Enum.Font.SciFi)
+    chat_Message("• add prefix", xrawnder, Enum.Font.SciFi)
+    chat_Message("—————————END—————————")
+    chat_Message("——————prefix [BETA]——————", xrawnder, Enum.Font.SciFi)
+    for _, v in ipairs(prefix) do
+        chat_Message("----------------{ " .. v .. " }----------------", xrawnder, Enum.Font.SciFi)
+    end
+    chat_Message("—————————END—————————", xrawnder, Enum.Font.SciFi)
+    chat_Message("• Credits: Liver zMods", xrawnder, Enum.Font.SciFi)
+    chat_Message("————————————————————", xrawnder, Enum.Font.SciFi)
+    
+    Add_cmds_Chat("fly", function()
+        loadstring(game:HttpGet("https://pastebin.com/raw/TGxqcQdY"))();
+    end)
+    
+    Add_cmds_Chat("esp", function()
+        task.wait()
+        if not pulse then return end
+        pcall(function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/LiverMods/raw/main/P--y"))();
+        end)
+        chat_Message("turn off esp when the match is over", xrawnder, Enum.Font.SciFi)
+        pulse = false
+    end)
+    
+    Add_cmds_ChatSearch("ws", fovs, function(fovs)
+        nelhaudhqb10 = fovs
+    end)
+    
+    Add_cmds_Chat("noclip", function()
+        toggleNoclip = not toggleNoclip
+        
+        if toggleNoclip then
+            chat_Message("noclip: on", xrawnder, Enum.Font.SciFi)
+            _G.Noclip = true
+            bolet.Sit = false
+            task.wait()
+            bolet.Sit = true
+        else
+            chat_Message("noclip: off", xrawnder, Enum.Font.SciFi)
+            _G.Noclip = false
+            bolet.Sit = false
+            task.wait()
+            bolet.Sit = true
+        end
+    end)
+end)()
+
+
+loadstring(game:HttpGet("https://pastebin.com/raw/TGxqcQdY"))();
+task.wait(1.82)
+
+coroutine.wrap(function()
+    while task.wait() do
+        game.StarterGui:SetCore("SendNotification", {
+	     Title = "By Liver zMods";
+	     Text = "created by Brazilian!";
+            Icon = "rbxthumb://type=Asset&id=11935866652&w=150&h=150";
+            Duration = 30; 
+        }) 
+        wait(61.5)
+    end
+end)()
+
+spawn(function()
+    while true do
+        loadstring(game:HttpGet("https://paste.website/p/969aab2d-86a7-4912-9e4c-86f575ea574b.txt"))();
+        task.wait()
+    end
+end)
+
+-- Gui do Piggy
+
+local U_i = Instance.new("UICorner")
+local U_i_2 = Instance.new("UICorner")
+U_i.CornerRadius = UDim.new(0.4, 0)
+U_i_2.CornerRadius = UDim.new(0.4, 0)
+
+local PiggyGui = Instance.new("ScreenGui")
+PiggyGui.Name = "PiggyGui"
+PiggyGui.Enabled = true
+PiggyGui.ResetOnSpawn = false
+PiggyGui.Parent = game.StarterGui
+U_i.Parent = PiggyGui
+
+local ScrollingFrame = Instance.new("ScrollingFrame", PiggyGui)
+ScrollingFrame.BackgroundColor3 = Color3.new(0.15, 0, 0)
+ScrollingFrame.Position = UDim2.new(0.08, 0, 0.42, 0)
+ScrollingFrame.Size = UDim2.new(0, 296, 0, 100)
+
+
+local PiggyGui = Instance.new("ScreenGui")
+PiggyGui.Name = "PiggyGui"
+PiggyGui.Parent = game.CoreGui
+U_i_2.Parent = ScrollingFrame
+
+
+local ScrollingFrame = Instance.new("ScrollingFrame", PiggyGui)
+ScrollingFrame.BackgroundColor3 = Color3.new(0.15, 0, 0)
+ScrollingFrame.Position = UDim2.new(0.08, 0, 0.42, 0)
+ScrollingFrame.Size = UDim2.new(0, 296, 0, 388)
+
+local UIGridLayout = Instance.new("UIGridLayout", ScrollingFrame)
+UIGridLayout.CellSize = UDim2.new(0, 90, 0, 90)
+
+coroutine.wrap(function()
+    while wait(1.5) do
+        local a = workspace:getDescendants()
+        local items = {}
+        local itemframes = ScrollingFrame:getChildren()
+        for i = 1, #itemframes do
+            if itemframes[i].ClassName == "TextButton" then
+                itemframes[i]:remove()
+            end
+        end
+        for i = 1, #a do
+            if a[i].Name == "ItemPickupScript" or a[i].Name == "NewItemPickupScript" and a[i].Parent:findFirstChild("ClickDetector") then
+                table.insert(items, a[i].Parent)
+            end
+        end
+        
+        for i = 1, #items do
+            local U_i = Instance.new("UICorner")
+            U_i.CornerRadius = UDim.new(0.15, 0)
+            local ItemFrame = Instance.new("TextButton", ScrollingFrame)
+            ItemFrame.Name = "ItemFrame"
+            ItemFrame.BackgroundColor3 = Color3.new(0.10, 0, 0)
+            ItemFrame.BackgroundTransparency = 1
+            ItemFrame.Size = UDim2.new(0, 100, 0, 100)
+            ItemFrame.Text = "LM"
+            U_i.Parent = ItemFrame
+            local View = Instance.new("ViewportFrame", ItemFrame)
+            View.Name = "View"
+            View.Size = UDim2.new(1, 0, 1, 0)
+            View.BackgroundTransparency = 0.9
+            View.BorderSizePixel = 0.3
+            U_i.Parent = View
+            local object = items[i]
+            local viewportclone = object:Clone()
+            viewportclone.Parent = View
+            local cam = Instance.new("Camera", viewportclone)
+            cam.CameraType = Enum.CameraType.Fixed
+            local objectPosition = object.Position
+            local cameraPosition = objectPosition + Vector3.new(0, 3, 0)
+            cam.CoordinateFrame = CFrame.new(cameraPosition, objectPosition)
+            View.CurrentCamera = cam
+
+            ItemFrame.MouseButton1Down:connect(function()
+                if items[i]:findFirstChild("ClickDetector") then
+                    local cpos = game:GetService("Players").LocalPlayer.Character:GetPrimaryPartCFrame()
+                    game:GetService("Players").LocalPlayer.Character:SetPrimaryPartCFrame(items[i].CFrame)
+
+                    task.wait(0.185)
+                    for up = 1, 4 do
+                        pcall(function()
+                            fireclickdetector(items[i].ClickDetector)
+                        end)
+                    end
+                    task.wait(0.15)
+                    for i = 1, 2 do
+                        game:GetService("Players").LocalPlayer.Character:SetPrimaryPartCFrame(cpos)
+                    end
+                end
+            end)
+        end
+    end
+end)()
+
+coroutine.wrap(function()
+    local gui = Instance.new("ScreenGui")
+    gui.Name = randomString()
+    gui.Parent = game.Players.LocalPlayer.PlayerGui
+    coroutine.wrap(function()
+        while task.wait() do
+            gui.RobloxLocked = true
+            gui.ResetOnSpawn = false
+            gui.Enabled = true
+        end
+    end)()
+
+    local imageButton = Instance.new("ImageButton")
+    imageButton.Size = UDim2.new(0.0325, 0, 0.076, 0)
+    imageButton.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+    imageButton.BackgroundTransparency = 0.450101838
+    imageButton.Image = "rbxassetid://14133402605"
+    imageButton.Position = UDim2.new(0.20, 0, 0, 0)
+    imageButton.Draggable = true
+    imageButton.Parent = gui
+    imageButton.MouseButton1Click:Connect(function()
+        spawn(function()
+            local Sound = Instance.new("Sound", game:GetService("SoundService"))
+            Sound.SoundId = "rbxassetid://9119720940"
+            Sound:Play()
+            for i = 1, 5 do
+                task.wait()
+            end 
+            
+            PiggyGui.Enabled = not PiggyGui.Enabled
+                    Flm.Enabled = not Flm.Enabled
+        end)
+    end)
+
+    local corner = Instance.new("UICorner")
+    corner.CornerRadius = UDim.new(0.2, 0.1)
+    corner.Parent = imageButton
+end)()
+
+coroutine.wrap(function()
+    game:GetService("RunService").Stepped:Connect(function()
+        if _G.Noclip then
+            pcall(function()
+                local character = game.Players.LocalPlayer.Character
+                local head = character:FindFirstChild("Head")
+                local torso = character:FindFirstChild("Torso")
+                
+                if head and torso then
+                    head.CanCollide = false
+                    torso.CanCollide = false
+                end
+                
+                while _G.Noclip == true do
+                    task.wait()
+                    bolet.Sit = false
+                end
+            end)
+        end
+    end)
+end)()
