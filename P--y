@@ -1,3 +1,18 @@
+--// Loadstring //
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))();
+
+--// function //
+local function noti(Ti, Tx, T)
+    OrionLib:MakeNotification({
+        Name = Ti,
+        Content = Tx,
+        Image = "rbxassetid://4483345998",
+        Time = T
+    })
+    OrionLib:Init()
+end
+
+--// Gui + etc //
 game.StarterGui:SetCore("SendNotification", {
 	Title = "Attention";
 	Text = "turn it off when the match is over!";
@@ -24,7 +39,7 @@ label.Parent = main
 label.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 label.Size = UDim2.new(0, 90, 0, 20)
 label.Font = Enum.Font.SourceSans
-label.Text = "ESP gui V4"
+label.Text = "ESP gui V5"
 label.TextColor3 = Color3.fromRGB(0, 99, 390)
 label.TextScaled = true
 label.TextSize = 2.580
@@ -36,15 +51,16 @@ Rawnder.BackgroundColor3 = Color3.fromRGB(32, 32, 32)
 Rawnder.Position = UDim2.new(0.0483, 0, 0.388448981, 0)
 Rawnder.Size = UDim2.new(0, 82, 0, 34)
 Rawnder.Font = Enum.Font.Kalam
-Rawnder.Text = "Off"
+Rawnder.Text = "OFF"
 Rawnder.TextColor3 = Color3.fromRGB(49, 180, 198)
-Rawnder.TextSize = 19.892
+Rawnder.TextSize = 22.892
 Rawnder.MouseButton1Down:connect(function()
     boolean = not boolean
     Rawnder.Text = boolean and "ON" or "OFF"
+    noti("⚠️ Status ⚠️", boolean and "ON" or "OFF", 2.6)
     task.wait()
     getgenv().enabled = boolean
-    getgenv().filltrans = 0.85
+    getgenv().filltrans = 0.87
     getgenv().outlinetrans = 0.1
 
     local localPlayer = game.Players.LocalPlayer
@@ -94,7 +110,7 @@ Rawnder.MouseButton1Down:connect(function()
                     esp.FillColor = Color3.new(1, 0, 0)
                     esp.OutlineColor = Color3.new(1, 0, 0)
                  end)
-                task.wait(0.6)
+                task.wait(0.54)
                 task.spawn(function()
                     task.wait()
                     esp.FillColor = Color3.new(0, 1, 0)
