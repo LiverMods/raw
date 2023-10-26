@@ -1,0 +1,36 @@
+local message = Instance.new("Message", workspace)
+        task.spawn(function()
+            message.Text = "Loading"
+        end)
+        wait(1.2)
+        gds = true
+        message:Destroy()
+
+    if got == '✅' then
+        if game.PlaceId == 4623386862 or game.PlaceId == 5661005779 or 5247067896 then goods = true else
+            local player = game.Players:GetPlayerFromCharacter(charr)
+            local teleportService = game:GetService("TeleportService")
+            
+            local Sound = Instance.new("Sound", game:GetService("SoundService"))
+            Sound.SoundId = "rbxassetid://2323663829"
+            Sound:Play()
+
+            local dealership = Instance.new('BindableFunction')
+            function dealership.OnInvoke(state)
+                if state == 'join Piggy' then
+                    teleportService:Teleport(4623386862, player)
+                end1
+            end
+            while not gds do task.wait(0.1) end
+            game.StarterGui:SetCore('SendNotification', {
+                Title = "Error";
+                Text = "no support for this game";
+                Icon = "rbxthumb://type=Asset&id=12294607996&w=150&h=150";
+                Duration = math.huge,
+                Callback = dealership,
+                Button1 = 'join Piggy',
+                Button2 = '❌'
+            })
+            return
+        end
+    end
