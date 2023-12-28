@@ -151,7 +151,7 @@ Rawnder.MouseButton1Down:connect(function()
 
     coroutine.wrap(function()
         while enabled do
-            task.wait()
+            task.wait(0.08)
             checkAndCreateHighlightForObjects()
         end
     end)()
